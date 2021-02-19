@@ -6,22 +6,24 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { smallImage } from "../util";
+
 const GameDetail = () => {
   const history = useHistory();
-  //Exit Details
-  const exitDetailHandler = (e) => {
+  //Exit Detail
+  const exitDetailHander = (e) => {
     const element = e.target;
     if (element.classList.contains("shadow")) {
       document.body.style.overflow = "auto";
       history.push("/");
     }
   };
+
   //Data
   const { screen, game, isLoading } = useSelector((state) => state.detail);
   return (
     <>
       {!isLoading && (
-        <CardShadow className="shadow" onClick={exitDetailHandler}>
+        <CardShadow className="shadow" onClick={exitDetailHander}>
           <Detail>
             <Stats>
               <div className="rating">
@@ -98,14 +100,12 @@ const Detail = styled(motion.div)`
 
 const Stats = styled(motion.div)`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 `;
-
 const Info = styled(motion.div)`
   text-align: center;
 `;
-
 const Platforms = styled(motion.div)`
   display: flex;
   justify-content: space-evenly;
@@ -115,14 +115,14 @@ const Platforms = styled(motion.div)`
 `;
 
 const Media = styled(motion.div)`
-  margin-top: 3rem;
+  margin-top: 5rem;
   img {
     width: 100%;
   }
 `;
 
 const Description = styled(motion.div)`
-  margin: 3rem 0;
+  margin: 5rem 0rem;
 `;
 
 export default GameDetail;

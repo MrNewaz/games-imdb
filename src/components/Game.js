@@ -1,4 +1,5 @@
-//Style & Animation
+import React from "react";
+//Styling and Animation
 import styled from "styled-components";
 import { motion } from "framer-motion";
 //Redux
@@ -8,9 +9,8 @@ import { Link } from "react-router-dom";
 import { smallImage } from "../util";
 
 const Game = ({ name, released, image, id }) => {
-  //Load Details Handler
+  //Load Detail Handler
   const dispatch = useDispatch();
-
   const loadDetailHandler = () => {
     document.body.style.overflow = "hidden";
     dispatch(loadDetail(id));
@@ -35,7 +35,7 @@ const StyledGame = styled(motion.div)`
   overflow: hidden;
   img {
     width: 100%;
-    height: 35vh;
+    height: 40vh;
     object-fit: cover;
   }
 `;
