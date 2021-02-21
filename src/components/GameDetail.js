@@ -27,7 +27,21 @@ const GameDetail = ({ pathId }) => {
     }
   };
 
-  //
+  //Star Logic
+  const getStars = () => {
+    const stars = [];
+    const rating = Math.floor(game.rating);
+    for (let i = 1; i <= 5; i++) {
+      if (i <= rating) {
+        stars.push(<img alt="star" key={i} src={starFull}></img>);
+      } else {
+        stars.push(<img alt="star" key={i} src={starEmpty}></img>);
+      }
+    }
+    return stars;
+  };
+
+  //get Platform Images
   const getPlatform = (platform) => {
     switch (platform) {
       case "PlayStation 4":
@@ -57,6 +71,7 @@ const GameDetail = ({ pathId }) => {
               <div className="rating">
                 <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
                 <p>Rating: {game.rating}</p>
+                {getStars()}
               </div>
               <Info>
                 <h3>Platforms</h3>
@@ -133,6 +148,11 @@ const Stats = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  img {
+    height: 2rem;
+    width: 2rem;
+    display: inline;
+  }
 `;
 const Info = styled(motion.div)`
   text-align: center;
